@@ -7,7 +7,8 @@
     "plugin:react/recommended",
     "plugin:prettier/recommended",
     "airbnb",
-    "airbnb-typescript"
+    "airbnb-typescript",
+    "prettier"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -15,11 +16,22 @@
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": 14,
+    "ecmaVersion": "latest",
     "sourceType": "module"
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
-    "devDependencies": false
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never",
+        "mjs": "never",
+        "vue": "never"
+      }
+    ]
   }
 }

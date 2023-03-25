@@ -1,5 +1,7 @@
 import React from "react";
 
-export const Patients = () => {
+function Patients() {
   return <div>Patients</div>;
-};
+}
+
+export default Patients;

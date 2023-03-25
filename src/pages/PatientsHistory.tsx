@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 
-export const PatientsHistory = () => {
-  return (
-    <div>PatientsHistory</div>
-  )
+function PatientsHistory() {
+  return <div>PatientsHistory</div>;
 }
+
+export default PatientsHistory;
