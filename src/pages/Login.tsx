@@ -3,7 +3,7 @@ import LoginCard from "~/components/LoginCard";
 
 function Login(): JSX.Element {
   return (
-    <div className="border-amber-50 border-2 items-center">
+    <div className="flex flex-col h-screen justify-center items-center bg-gray-700">
       <LoginCard />
     </div>
   );
