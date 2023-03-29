@@ -3,9 +3,11 @@ import { FirebaseAuth } from "~/service/firebase.service";
 
 const auth = FirebaseAuth;
 const signIn = (email: string, password: string) => {
+  let isLogged = false;
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential: UserCredential) => {
       const { user } = userCredential;
+      isLogged = true;
       console.log(user);
     })
     .catch((error) => {
@@ -13,5 +15,6 @@ const signIn = (email: string, password: string) => {
       const errorMessage = error.message;
       console.log(errorCode, errorMessage);
     });
+  return isLogged;
 };
 export default signIn;

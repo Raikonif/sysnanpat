@@ -1,21 +1,26 @@
 import React, { useEffect, useState } from "react";
-import firebase from "firebase/compat";
 import { FirebaseAuth } from "~/service/firebase.service";
 import signIn from "~/service/providers";
+import { useNavigate } from "react-router-dom";
 // interface FormProps {
 //   onSubmit: (email: string, password: string) => void;
 // }
 function LoginCard(): JSX.Element {
+  const navigate = useNavigate();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const [isLogged, setIsLogged] = useState<boolean>(false);
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     // implement login logic here using email and password and redirect to home page
     e.preventDefault();
     try {
       console.log("we are trying to sign in");
-      await signIn(email, password);
-      console.log("Login successful!");
+      const logged = signIn(email, password);
+      setIsLogged(logged);
+      console.log("we are logged", logged);
+      if (logged) {
+        navigate("/home");
+      }
     } catch (error) {
       console.log("we caught an error", error);
     }
