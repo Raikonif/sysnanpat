@@ -10,12 +10,11 @@ function LoginCard(): JSX.Element {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [isLogged, setIsLogged] = useState<boolean>(false);
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     // implement login logic here using email and password and redirect to home page
     e.preventDefault();
     try {
-      console.log("we are trying to sign in");
-      const logged = signIn(email, password);
+      const logged = await signIn(email, password);
       setIsLogged(logged);
       console.log("we are logged", logged);
       if (logged) {
