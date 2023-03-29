@@ -1,12 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { defineConfig } from "vite";
+import { config } from "dotenv";
 import react from "@vitejs/plugin-react";
 import tsConfigPaths from "vite-tsconfig-paths";
 // https://vitejs.dev/config/
-
-// @ts-ignore
-// @ts-ignore
-// @ts-ignore
+config();
 export default defineConfig({
   plugins: [react(), tsConfigPaths()],
   // server: {
