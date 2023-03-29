@@ -2,9 +2,9 @@ import { signInWithEmailAndPassword, UserCredential } from "firebase/auth";
 import { FirebaseAuth } from "~/service/firebase.service";
 
 const auth = FirebaseAuth;
-const signIn = (email: string, password: string) => {
+const signIn = async (email: string, password: string) => {
   let isLogged = false;
-  signInWithEmailAndPassword(auth, email, password)
+  await signInWithEmailAndPassword(auth, email, password)
     .then((userCredential: UserCredential) => {
       const { user } = userCredential;
       isLogged = true;
