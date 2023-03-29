@@ -1,13 +1,36 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import firebase from "firebase/compat";
+import { FirebaseAuth } from "~/service/firebase.service";
+import signIn from "~/service/providers";
+// interface FormProps {
+//   onSubmit: (email: string, password: string) => void;
+// }
 function LoginCard(): JSX.Element {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    // implement login logic here using email and password and redirect to home page
+    e.preventDefault();
+    try {
+      console.log("we are trying to sign in");
+      await signIn(email, password);
+      console.log("Login successful!");
+    } catch (error) {
+      console.log("we caught an error", error);
+    }
+  };
+  // useEffect(() => {
+  //
+  // }, []);
+
   return (
     <div className="flex flex-col w-full max-w-md px-10 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-10 md:px-10 lg:px-10">
       <div className="self-center mb-6 text-xl font-light text-gray-600 sm:text-2xl dark:text-white">
         Welcome
       </div>
       <div className="mt-8">
-        <form action="#" autoComplete="off">
+        <form onSubmit={handleSubmit} action="#" autoComplete="off">
           <div className="flex flex-col mb-2">
             <div className="flex relative ">
               <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
@@ -22,7 +45,11 @@ function LoginCard(): JSX.Element {
                 </svg>
               </span>
               <input
-                type="text"
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+                value={email}
+                type="email"
                 id="sign-in-email"
                 className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                 placeholder="E-mail"
@@ -43,6 +70,10 @@ function LoginCard(): JSX.Element {
                 </svg>
               </span>
               <input
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+                value={password}
                 type="password"
                 id="sign-in-password"
                 className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
