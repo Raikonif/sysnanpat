@@ -1,9 +1,10 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import firebase, { initializeApp } from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 import { API_KEY } from "~/service/service.constants";
-
-// import { initializeApp } from "firebase/app";
+import { getAuth } from "@firebase/auth";
+import { getFirestore } from "@firebase/firestore";
 
 // TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
@@ -17,4 +18,6 @@ const firebaseConfig = {
   measurementId: "G-EC9CPQRDYK",
 };
 
-const app = initializeApp(firebaseConfig);
+export const firebaseService = initializeApp(firebaseConfig);
+export const FirebaseAuth = getAuth(firebaseService);
+export const Firestore = getFirestore(firebaseService);
