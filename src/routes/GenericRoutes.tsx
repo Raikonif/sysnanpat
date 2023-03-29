@@ -8,8 +8,8 @@ import PatientsHistory from "../pages/PatientsHistory";
 function GenericRoutes(): JSX.Element {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login />} />
+      <Route path="/" element={<Login />} />
+      <Route path="/login" element={<Home />} />
       <Route path="/patients" element={<Patients />} />
       <Route path="/patients_history" element={<PatientsHistory />} />
       <Route path="*" element={<h1>404</h1>} />
