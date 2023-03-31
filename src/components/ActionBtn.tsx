@@ -1,7 +1,7 @@
 import React from "react";
 
-const ActionBtn = () => {
+function ActionBtn() {
   return <div>ActionBtn</div>;
-};
+}
 
 export default ActionBtn;

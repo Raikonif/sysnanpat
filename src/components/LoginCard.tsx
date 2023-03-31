@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { FirebaseAuth } from "~/service/firebase.service";
-import signIn from "~/service/providers";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import signIn from "~/service/providers";
 // interface FormProps {
 //   onSubmit: (email: string, password: string) => void;
 // }
@@ -11,22 +10,18 @@ function LoginCard(): JSX.Element {
   const [password, setPassword] = useState<string>("");
   const [isLogged, setIsLogged] = useState<boolean>(false);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    // implement login logic here using email and password and redirect to home page
     e.preventDefault();
     try {
       const logged = await signIn(email, password);
       setIsLogged(logged);
       console.log("we are logged", logged);
-      if (logged) {
+      if (isLogged) {
         navigate("/home");
       }
     } catch (error) {
       console.log("we caught an error", error);
     }
   };
-  // useEffect(() => {
-  //
-  // }, []);
 
   return (
     <div className="flex flex-col w-full max-w-md px-10 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-10 md:px-10 lg:px-10">
