@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CardItem from "~/components/CardItem";
 
 function Home(): JSX.Element {
